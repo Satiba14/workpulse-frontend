@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* THIS LINE ENABLES CLASS-BASED DARK MODE IN TAILWIND V4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  @apply bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-100;
+  transition: background-color 0.3s, color 0.3s;
+}

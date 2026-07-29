@@ -1,0 +1,65 @@
+export const EMPLOYEE_FORM_SECTIONS = [
+  {
+    title: "Personal Information",
+    color: "text-sky-600",
+    fields: [
+      { name: "first_name",  label: "First Name",  type: "text", required: true,
+        validate: v => !v?.trim() ? "First name is required" : null },
+      { name: "last_name",   label: "Last Name",   type: "text", required: true,
+        validate: v => !v?.trim() ? "Last name is required" : null },
+      { name: "phone_no",    label: "Phone Number",type: "tel",  required: true,
+        validate: v => !v ? "Required" : !/^\d{10}$/.test(v) ? "Must be 10 digits" : null },
+      { name: 'email', label: 'Email',type: 'email',required: true,placeholder: 'employee@invenger.com',},
+      { name: "alternative_phone_no", label: "Alt Phone", type: "tel", required: false,
+        validate: v => v && !/^\d{10}$/.test(v) ? "Must be 10 digits" : null },
+      { name: "date_of_birth",  label: "Date of Birth",  type: "date",          required: true },
+      { name: "gender",         label: "Gender",          type: "gender_select", required: true },
+      { name: "blood_group",    label: "Blood Group",     type: "blood_select",  required: true },
+      { name: "marital_status", label: "Marital Status",  type: "marital_select",required: true },
+      // Family — part of personal
+      { name: "father_name", label: "Father's Name", type: "text", required: true },
+      { name: "mother_name", label: "Mother's Name", type: "text", required: true },
+      { name: "spouse_name", label: "Spouse's Name", type: "text", required: false },
+    ],
+  },
+  {
+    title: "Address",
+    color: "text-teal-600",
+    fields: [
+      { name: "current_address", label: "Current Address",   type: "textarea", required: true, cols: 2 },
+      { name: "current_pincode", label: "Pincode",           type: "text",     required: true,
+        validate: v => v && !/^\d{6}$/.test(v) ? "6 digits" : null },
+      { name: "current_city",    label: "City",              type: "text",     required: true },
+      { name: "current_state",   label: "State",             type: "text",     required: true },
+      { name: "permanent_address", label: "Permanent Address", type: "textarea", required: true, cols: 2 },
+      { name: "permanent_pincode", label: "Pincode",           type: "text",     required: true,
+        validate: v => v && !/^\d{6}$/.test(v) ? "6 digits" : null },
+      { name: "permanent_city",    label: "City",              type: "text",     required: true },
+      { name: "permanent_state",   label: "State",             type: "text",     required: true },
+      { name: "aadhaar_address", label: "Aadhaar Address", type: "textarea", required: false, cols: 2 },
+      { name: "nation",          label: "Nation",           type: "text",     required: false },
+    ],
+  },
+  {
+    title: "Professional Details",
+    color: "text-orange-600",
+    fields: [
+      { name: "department",   label: "Department",   type: "select",           required: true },
+      { name: "designation",  label: "Designation",  type: "text",             required: true,
+        placeholder: "e.g. Software Engineer, QA Lead, Cloud Architect" },
+      { name: "joined_on",    label: "Joined On",    type: "date",             required: true },
+      { name: "status",       label: "Status",       type: "status_select",    required: true },
+      { name: "reporting_to", label: "Reports To",   type: "reporting_select", required: false },
+    ],
+  },
+];
+
+export const EMPLOYEE_INITIAL_STATE = {
+  first_name: "", last_name: "", phone_no: "", alternative_phone_no: "",
+  date_of_birth: "", gender: "", blood_group: "", marital_status: "",
+  father_name: "", mother_name: "", spouse_name: "",
+  current_address: "", current_pincode: "", current_city: "", current_state: "",
+  permanent_address: "", permanent_pincode: "", permanent_city: "", permanent_state: "",
+  aadhaar_address: "", nation: "",
+  department: "", designation: "", joined_on: "", status: "billable", reporting_to: "",
+};
