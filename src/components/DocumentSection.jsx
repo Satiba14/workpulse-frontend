@@ -43,7 +43,7 @@ export const DocumentSection = ({
   onDocDeleted,
 }) => {
   const [deletingId, setDeletingId] = useState(null);
-  const [localRemoved, setLocalRemoved] = useState([]); // ids removed optimistically
+  const [localRemoved, setLocalRemoved] = useState([]); 
 
   const findExisting = (typeKey) =>
     existingDocs.find(
@@ -130,7 +130,11 @@ export const DocumentSection = ({
                 {existing?.file_path && !pending && (
                   <>
                     <a
-                      href={existing.file_path}
+                      href={
+                        existing.file_path?.includes('/raw/')
+                          ? `https://docs.google.com/viewer?url=${encodeURIComponent(existing.file_path)}&embedded=false`
+                          : existing.file_path
+                        }
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => {
